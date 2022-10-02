@@ -13,11 +13,6 @@ export function TryCatchController(statusCode?: number, message?: string) {
       try {
         return await originalMethod.apply(this, args);
       } catch (error: any) {
-        if (error?.message == 'jwt must be provided') {
-          statusCode = 401;
-          message = 'Please sign in';
-        }
-
         args[1]
           .status(
             error?.response?.statusCode ??

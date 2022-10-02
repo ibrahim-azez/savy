@@ -6,30 +6,48 @@ import rateLimit from 'express-rate-limit';
 import * as cookieParser from 'cookie-parser';
 import * as ExpressSession from 'express-session';
 // import * as xss from 'xss-clean';
-import * as mongoSanitize from 'express-mongo-sanitize';
 import * as hpp from 'hpp';
-
-import { userRouter } from './app/modules/user/user.router';
-import { authRouter } from './app/modules/auth/auth.router';
+import * as passport from 'passport';
+import { Repository } from 'typeorm';
+import { ISession, TypeormStore } from 'connect-typeorm';
+import { Session } from './app/core/entities/session.entity';
+import { myDataSource } from './app/core/utils/database';
 import { environment } from '@environment';
-import { TypeormStore } from 'connect-typeorm/out';
-import { myDataSource } from './database';
-import { Session } from '@core/utils/session';
 
 export const app = express();
 
-// compress all responses
+/**
+ * Enable reverse proxy support in Express. This causes the
+ * the "X-Forwarded-Proto" header field to be trusted so its
+ * value can be used to determine the protocol. See
+ * http://expressjs.com/api#app-settings for more details.
+ */
+app.enable('trust proxy');
+
+/**
+ *
+ * ----------------- COMPRESS ASS RESPONSES -------------------
+ */
 app.use(compression());
 
-// Set security HTTP headers
+/**
+ *
+ * ----------------- SET SECURITY HTTP HEADERS -------------------
+ */
 app.use(helmet());
 
-// Development logging
-if (process.env.NODE_ENV === 'development') {
+/**
+ *
+ * ----------------- DEVELOPMENT LOGGING -------------------
+ */
+if (!environment.production) {
   app.use(morgan('dev'));
 }
 
-// Limit requests from same API
+/**
+ *
+ * ----------------- LIMIT REQUESTS FROM THE SAME API -------------------
+ */
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
@@ -37,7 +55,10 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// Body parser, reading data from body into req.body
+/**
+ *
+ * ----------------- BODY PARSER, READING DATA FROM BODY INTO req.body -------------------
+ */
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
@@ -45,12 +66,15 @@ app.use(cookieParser());
 /**
  *  ----------------- SESSION SETUP -------------------
  */
-const sessionRepository = myDataSource.getRepository(Session);
+const sessionRepository: Repository<ISession> =
+  myDataSource.getRepository(Session);
+
 app.use(
   ExpressSession({
+    name: 'auth',
     secret: environment.SESSION_SECRET_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new TypeormStore({
       limitSubquery: false, // If using MariaDB.
       ttl: 86400,
@@ -59,10 +83,22 @@ app.use(
   })
 );
 
-// Data sanitization against XSS
+/**
+ *  ----------------- PASSPORT AUTHENTICATION -------------------
+ * Need to require Passport config module so app.ts knows about it
+ */
+app.use(passport.initialize());
+app.use(passport.session());
+import './app/core/utils/passport-session';
+
+/**
+ *  ----------------- DATA SANITIZATION AGAINST XSS -------------------
+ */
 // app.use(xss());
 
-// Prevent parameter pollution
+/**
+ *  ----------------- PREVENT PARAMETER POLLUTION -------------------
+ */
 app.use(
   hpp({
     whitelist: [
@@ -75,20 +111,3 @@ app.use(
     ],
   })
 );
-
-// 3) ROUTES
-const root = '/api/v1';
-app.use(`${root}/user`, userRouter);
-app.use(`${root}/auth`, authRouter);
-
-// app.all('*', (req, res, next) => {
-//   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-// });
-
-// app.use(globalErrorHandler);
-
-// // Test middleware
-// app.use((req, res, next) => {
-//   req.requestTime = new Date().toISOString();
-//   next();
-// });

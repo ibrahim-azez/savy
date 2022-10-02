@@ -4,9 +4,12 @@
   "include": [],
   "compilerOptions": {
     "baseUrl": "../../",
+    "resolveJsonModule": true,
     "paths": {
-      "@core/*": ["apps/savy/src/app/core/*"],
+      "@core": ["apps/savy/src/app/core/index.ts"],
       "@modules/*": ["apps/savy/src/app/modules/*"],
+      "@dump-modules": ["apps/savy/src/app/dump-modules/index.ts"],
+
       "@environment": ["apps/savy/src/environments/environment.ts"]
     }
   },

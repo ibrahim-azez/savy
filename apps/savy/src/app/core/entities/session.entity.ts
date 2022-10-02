@@ -1,5 +1,6 @@
 import { ISession } from 'connect-typeorm';
 import {
+
   Column,
   DeleteDateColumn,
   Entity,
@@ -9,8 +10,8 @@ import {
 
 @Entity()
 export class Session implements ISession {
-  @Index()
   @Column('bigint')
+  @Index()
   public expiredAt = Date.now();
 
   @PrimaryColumn('varchar', { length: 255 })

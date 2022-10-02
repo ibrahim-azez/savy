@@ -1,11 +1,8 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
 import 'reflect-metadata';
-import { app } from './app';
-import { logger } from './app/core/utils/logger';
-import { myDataSource } from './database';
+import 'es6-shim';
+import { logger } from '@core';
+import { routes } from './routes';
+import { myDataSource } from './app/core/utils/database';
 
 process.on('uncaughtException', (err) => {
   logger.error('UNHANDLED REJECTION! 💥 Shutting down...');
@@ -15,16 +12,17 @@ process.on('uncaughtException', (err) => {
 
 const port = process.env.port || 3333;
 
-// establish database connection
+/**
+ *  ----------------- DATABASE CONNECTION SETUP THEN RUN THE SERVER -------------------
+ */
 myDataSource
   .initialize()
   .then(() => {
     logger.info('Data Source has been initialized!');
 
-    const server = app.listen(port, () => {
+    const server = routes.listen(port, () => {
       logger.info(`Listening at http://localhost:${port}`);
     });
-
     server.on('error', logger.error);
 
     process.on('unhandledRejection', (err: any) => {
