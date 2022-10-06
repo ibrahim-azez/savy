@@ -1,7 +1,3 @@
-// import { Product, User } from '@modules';
-
-// import { Product } from '@dump-modules';
-// import { User } from '@modules';
 import {
   Entity,
   Column,
@@ -10,12 +6,14 @@ import {
   JoinColumn,
   OneToOne,
   Index,
+  OneToMany,
 } from 'typeorm';
 import { Product } from '../../dump-modules/product/product.entity';
-import { Payment } from './payment.entity';
+import { Payment } from '../../core/entities/payment.entity';
+import { User } from '../user/user.entity';
 
 @Entity()
-@Index(['name', 'bill'])
+@Index(['name'])
 export class Order {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -25,9 +23,6 @@ export class Order {
 
   @Column({ nullable: false })
   quantity!: number;
-
-  @Column({ nullable: false })
-  bill!: number;
 
   @Column({
     default: Date.now().toString(),
@@ -44,12 +39,19 @@ export class Order {
   })
   updatedAt!: string;
 
-  @ManyToOne(() => Product, (product: Product) => product.order, {
+  @ManyToOne(() => User, (user: User) => user.order, {
     onUpdate: 'CASCADE',
+    nullable: false,
   })
-  product!: Product;
+  user!: User;
 
-  @OneToOne(() => Payment, { cascade: true })
+  @OneToMany(() => Product, (product: Product) => product.order, {
+    onUpdate: 'CASCADE',
+    nullable: false,
+  })
+  products!: Array<Product>;
+
+  @OneToOne(() => Payment, (payment) => payment.order)
   @JoinColumn()
   payment!: Payment;
 }

@@ -1,3 +1,5 @@
+import { Cart } from '../cart/cart.entity';
+import { Order } from '../order/order.entity';
 import {
   Entity,
   Column,
@@ -5,7 +7,6 @@ import {
   OneToMany,
   Index,
 } from 'typeorm';
-import { Cart } from '../cart/cart.entity';
 
 @Entity()
 @Index(['id', 'email', 'username'])
@@ -72,5 +73,10 @@ export class User {
   @OneToMany(() => Cart, (cart: Cart) => cart.user, {
     onUpdate: 'CASCADE',
   })
-  cart!: Cart[];
+  cart!: Array<Cart>;
+
+  @OneToMany(() => Order, (cart: Order) => cart.user, {
+    onUpdate: 'CASCADE',
+  })
+  order!: Array<Order>;
 }

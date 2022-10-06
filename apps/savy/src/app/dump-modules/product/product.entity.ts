@@ -10,6 +10,7 @@ import {
   Index,
   ManyToMany,
   JoinTable,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity()
@@ -57,11 +58,11 @@ export class Product {
   })
   updatedAt!: string;
 
-  @OneToMany(() => Order, (order: Order) => order.product, {
+  @ManyToOne(() => Order, (order: Order) => order.products, {
     nullable: true,
     onUpdate: 'CASCADE',
   })
-  order!: Order[];
+  order!: Order;
 
   @ManyToMany(() => Cart, (cart: Cart) => cart.products, {
     onDelete: 'CASCADE',

@@ -1,5 +1,12 @@
 // import { Product, User } from '@modules';
-import { Entity, Column, PrimaryGeneratedColumn, Index } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  Index,
+  OneToOne,
+} from 'typeorm';
+import { Order } from '../../modules/order/order.entity';
 
 @Entity()
 @Index(['amount'])
@@ -13,12 +20,19 @@ export class Payment {
   @Column({ nullable: true })
   description!: string;
 
-  @Column({ nullable: false })
+  @Column({ default: 'PAID', nullable: false })
   status!: 'PAID' | 'NOT_PAID';
 
   @Column({
     update: false,
     nullable: false,
+    default: Date.now().toString(),
   })
   date!: string;
+
+  @OneToOne(() => Order, (order) => order.payment, {
+    cascade: true,
+    nullable: false,
+  })
+  order!: Order;
 }

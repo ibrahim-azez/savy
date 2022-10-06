@@ -1734,3 +1734,99 @@
 {"level":"info","message":"Listening at http://localhost:3333"}
 {"level":"info","message":"Data Source has been initialized!"}
 {"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"error","message":"Error during Data Source initialization: Index contains column that is missing in the entity (Order): bill","stack":"TypeORMError: Index contains column that is missing in the entity (Order): bill\n    at /home/remy/Desktop/savy/src/metadata/IndexMetadata.ts:235:27\n    at Array.map (<anonymous>)\n    at IndexMetadata.build (/home/remy/Desktop/savy/src/metadata/IndexMetadata.ts:215:18)\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataBuilder.ts:364:23\n    at Array.forEach (<anonymous>)\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataBuilder.ts:363:36\n    at Array.forEach (<anonymous>)\n    at EntityMetadataBuilder.build (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataBuilder.ts:362:25)\n    at ConnectionMetadataBuilder.buildEntityMetadatas (/home/remy/Desktop/savy/src/connection/ConnectionMetadataBuilder.ts:106:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"error","message":"Error during Data Source initialization: Relation Payment#order and Order#payment both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.","stack":"TypeORMError: Relation Payment#order and Order#payment both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:278:23\n    at Array.forEach (<anonymous>)\n    at EntityMetadataValidator.validate (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:272:34)\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:43:18\n    at Array.forEach (<anonymous>)\n    at EntityMetadataValidator.validateMany (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:42:25)\n    at DataSource.buildMetadatas (/home/remy/Desktop/savy/src/data-source/DataSource.ts:689:33)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at DataSource.initialize (/home/remy/Desktop/savy/src/data-source/DataSource.ts:242:13)"}
+{"level":"error","message":"Error during Data Source initialization: Relation Payment#order and Order#payment both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.","stack":"TypeORMError: Relation Payment#order and Order#payment both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:278:23\n    at Array.forEach (<anonymous>)\n    at EntityMetadataValidator.validate (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:272:34)\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:43:18\n    at Array.forEach (<anonymous>)\n    at EntityMetadataValidator.validateMany (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:42:25)\n    at DataSource.buildMetadatas (/home/remy/Desktop/savy/src/data-source/DataSource.ts:689:33)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at DataSource.initialize (/home/remy/Desktop/savy/src/data-source/DataSource.ts:242:13)"}
+{"level":"error","message":"Error during Data Source initialization: Relation Payment#order and Order#payment both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.","stack":"TypeORMError: Relation Payment#order and Order#payment both has cascade remove set. This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:278:23\n    at Array.forEach (<anonymous>)\n    at EntityMetadataValidator.validate (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:272:34)\n    at /home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:43:18\n    at Array.forEach (<anonymous>)\n    at EntityMetadataValidator.validateMany (/home/remy/Desktop/savy/src/metadata-builder/EntityMetadataValidator.ts:42:25)\n    at DataSource.buildMetadatas (/home/remy/Desktop/savy/src/data-source/DataSource.ts:689:33)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at DataSource.initialize (/home/remy/Desktop/savy/src/data-source/DataSource.ts:242:13)"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}
+{"level":"info","message":"Data Source has been initialized!"}
+{"level":"info","message":"Listening at http://localhost:3333"}

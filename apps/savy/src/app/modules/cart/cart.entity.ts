@@ -36,14 +36,14 @@ export class Cart {
 
   @ManyToMany(() => Product, (product: Product) => product.cart, {
     cascade: true,
-    onUpdate: 'CASCADE',
+    onUpdate: 'CASCADE',nullable: false
   })
   products!: Array<Product>;
 
   @ManyToOne(() => User, (user: User) => user.cart, {
     cascade: true,
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
+    onUpdate: 'CASCADE',nullable: false
   })
   user!: User;
 }

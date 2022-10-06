@@ -7,7 +7,7 @@ export { ValidateBody } from './decorators/method/validate-body';
 export { ValidateParamsId } from './decorators/method/validate-params-id';
 
 //            ------- ENTITIES -------
-export { Order } from './entities/order.entity';
+export { Order } from '../modules/order/order.entity';
 export { Discount } from './entities/discount.entity';
 export { Payment } from './entities/payment.entity';
 export { Session } from './entities/session.entity';
