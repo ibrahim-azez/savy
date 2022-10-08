@@ -24,10 +24,14 @@ export class UpdateUserDto {
   role?: 'ADMIN' | 'USER' | 'GUEST';
 
   constructor(updateUserDto: UpdateUserDto) {
-    this.email = updateUserDto.email;
-    this.username = updateUserDto.username;
-    this.fullName = updateUserDto.fullName;
-    this.dateOfBirth = updateUserDto.dateOfBirth;
-    this.role = updateUserDto.role;
+    try {
+      this.email = updateUserDto.email;
+      this.username = updateUserDto.username;
+      this.fullName = updateUserDto.fullName;
+      this.dateOfBirth = updateUserDto.dateOfBirth;
+      this.role = updateUserDto.role;
+    } catch (err) {
+      return;
+    }
   }
 }

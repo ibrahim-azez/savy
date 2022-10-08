@@ -9,7 +9,7 @@ export { ValidateParamsId } from './decorators/method/validate-params-id';
 //            ------- ENTITIES -------
 export { Order } from '../modules/order/order.entity';
 export { Discount } from './entities/discount.entity';
-export { Payment } from './entities/payment.entity';
+export { Payment } from '../dump-modules/payment/payment.entity';
 export { Session } from './entities/session.entity';
 
 //            ------- MIDDLEWARE -------

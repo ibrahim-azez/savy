@@ -13,37 +13,41 @@ import { IsOnlyDate } from '@core';
 
 export class CreateUserDto {
   @IsEmail()
-  email: string;
+  email!: string;
 
   @IsString()
-  username: string;
+  username!: string;
 
   @IsString()
-  fullName: string;
+  fullName!: string;
 
   @IsOnlyDate()
-  dateOfBirth: string;
+  dateOfBirth!: string;
 
   @IsEnum({ ADMIN: 'ADMIN', USER: 'USER', GUEST: 'GUEST' })
-  role: 'ADMIN' | 'USER' | 'GUEST';
+  role!: 'ADMIN' | 'USER' | 'GUEST';
 
   @IsString()
   @MinLength(environment.PASSWORD_MIN_LENGTH)
   @MaxLength(environment.PASSWORD_MAX_LENGTH)
-  password: string;
+  password!: string;
 
   @IsString()
   @MinLength(environment.PASSWORD_MIN_LENGTH)
   @MaxLength(environment.PASSWORD_MAX_LENGTH)
-  confirmPassword: string;
+  confirmPassword!: string;
 
   constructor(createUserDto: CreateUserDto) {
-    this.email = createUserDto.email;
-    this.username = createUserDto.username;
-    this.fullName = createUserDto.fullName;
-    this.dateOfBirth = createUserDto.dateOfBirth;
-    this.role = createUserDto.role;
-    this.password = createUserDto.password;
-    this.confirmPassword = createUserDto.confirmPassword;
+    try {
+      this.email = createUserDto.email;
+      this.username = createUserDto.username;
+      this.fullName = createUserDto.fullName;
+      this.dateOfBirth = createUserDto.dateOfBirth;
+      this.role = createUserDto.role;
+      this.password = createUserDto.password;
+      this.confirmPassword = createUserDto.confirmPassword;
+    } catch (err) {
+      return;
+    }
   }
 }

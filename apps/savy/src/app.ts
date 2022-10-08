@@ -90,6 +90,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 import './app/core/utils/passport-session';
+import { ErrorHandlerMiddleware } from './app/core/middleware/error-handler.middleware';
 
 /**
  *  ----------------- DATA SANITIZATION AGAINST XSS -------------------
@@ -111,3 +112,6 @@ app.use(
     ],
   })
 );
+
+//            ------- Global Error Handler Middleware  -------
+app.use(ErrorHandlerMiddleware);

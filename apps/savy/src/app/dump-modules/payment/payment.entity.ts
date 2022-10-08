@@ -31,8 +31,9 @@ export class Payment {
   date!: string;
 
   @OneToOne(() => Order, (order) => order.payment, {
-    cascade: true,
     nullable: false,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   })
   order!: Order;
 }

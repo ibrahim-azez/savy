@@ -7,13 +7,12 @@ import { UserRepository } from './user.repository';
 import { CrudService, HttpResponse } from '@core';
 import { GetByUserDto } from './models/get-by-user-dto.model';
 
-
 @Service()
 export class UserService implements CrudService<User> {
   constructor(private readonly userRepository: UserRepository) {}
 
   async create(user: User) {
-    return await this.userRepository.create([user]);
+    return await this.userRepository.createOne(user);
   }
 
   async getBy(user: GetByUserDto) {

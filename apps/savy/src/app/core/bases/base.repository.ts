@@ -22,15 +22,12 @@ export class BaseRepository<Entity extends ObjectLiteral> {
     ) as Repository<Entity>;
   }
 
-  async create(createEntity: DeepPartial<Entity>[]) {
-    // const result = await this.repository
-    //   .createQueryBuilder()
-    //   .insert()
-    //   .into(this.entity)
-    //   .values(createEntity)
-    //   .execute();
+  async createOne(createEntity: DeepPartial<Entity>) {
+    const entity = this.repository.create(createEntity) as Entity;
+    return (await this.repository.save(entity)) as Entity;
+  }
 
-    // return result.generatedMaps as Entity[];
+  async createMany(createEntity: DeepPartial<Entity>[]) {
     const entity = this.repository.create(createEntity) as Entity[];
     return (await this.repository.save(entity)) as Entity[];
   }

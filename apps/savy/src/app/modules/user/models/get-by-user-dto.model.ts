@@ -26,8 +26,12 @@ export class GetByUserDto {
   username?: string;
 
   constructor(getByUserDto: GetByUserDto) {
-    this.id = getByUserDto.id;
-    this.email = getByUserDto.email;
-    this.username = getByUserDto.username;
+    try {
+      this.id = getByUserDto.id;
+      this.email = getByUserDto.email;
+      this.username = getByUserDto.username;
+    } catch (err) {
+      return;
+    }
   }
 }

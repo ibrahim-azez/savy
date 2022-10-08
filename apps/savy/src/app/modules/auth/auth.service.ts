@@ -14,7 +14,7 @@ import { HttpResponse, hashingPassword } from '@core';
 export class AuthService {
   constructor(private userRepository: UserRepository) {}
 
-  async signup(signup: SignupDto): Promise<User[]> {
+  async signup(signup: SignupDto): Promise<User> {
     const { email, username, password, confirmPassword } = signup;
 
     const user = await this.userRepository.getBy([{ email }, { username }]);
@@ -26,13 +26,11 @@ export class AuthService {
 
     const { salt, hashedPassword } = await hashingPassword(password);
 
-    return (await this.userRepository.create([
-      {
-        email,
-        username,
-        password: salt + '.' + hashedPassword,
-      },
-    ])) as User[];
+    return (await this.userRepository.createOne({
+      email,
+      username,
+      password: salt + '.' + hashedPassword,
+    })) as User;
   }
 
   async login(user: Partial<User>): Promise<Partial<User>> {

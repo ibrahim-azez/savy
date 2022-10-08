@@ -18,12 +18,16 @@ export class UpdateCartDto {
   @ArrayMaxSize(environment.CART_QUANTITY_MAX)
   @ValidateNested({ each: true, always: true })
   @Type(() => UpdateProductDto)
-  products: Array<UpdateProductDto>;
+  products!: Array<UpdateProductDto>;
 
   constructor(updateCartDto: UpdateCartDto) {
-    this.products = arrayOfObjectsToInstance(
-      UpdateProductDto,
-      updateCartDto.products
-    );
+    try {
+      this.products = arrayOfObjectsToInstance(
+        UpdateProductDto,
+        updateCartDto.products
+      );
+    } catch (err) {
+      return;
+    }
   }
 }

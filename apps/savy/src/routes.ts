@@ -9,6 +9,7 @@ import { userRouter } from './app/modules/user/user.router';
 
 // import { authRouter, productRouter, userRouter } from '@modules';
 // import { isAdminMiddleware, isAuthMiddleware } from '@core';
+import { orderRouter } from './app/modules/order/order.router';
 
 export const routes = app;
 
@@ -17,7 +18,8 @@ const rootUrl = '/api/v1';
 routes.use(`${rootUrl}/auth`, authRouter);
 routes.use(`${rootUrl}/user`, isAuthMiddleware, userRouter);
 routes.use(`${rootUrl}/cart`, isAuthMiddleware, cartRouter);
-routes.use(ErrorHandlerMiddleware);
+routes.use(`${rootUrl}/order`, isAuthMiddleware, orderRouter);
+
 routes.get(
   `${rootUrl}/protected-route`,
   isAuthMiddleware,

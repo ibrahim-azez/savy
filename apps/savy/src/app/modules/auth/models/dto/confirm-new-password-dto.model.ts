@@ -6,15 +6,19 @@ export class ConfirmNewPasswordDto {
   @IsString()
   @MinLength(environment.PASSWORD_MIN_LENGTH)
   @MaxLength(environment.PASSWORD_MAX_LENGTH)
-  password: string;
+  password!: string;
 
   @IsString()
   @MinLength(environment.PASSWORD_MIN_LENGTH)
   @MaxLength(environment.PASSWORD_MAX_LENGTH)
-  confirmPassword: string;
+  confirmPassword!: string;
 
   constructor(confirmNewPassword: ConfirmNewPasswordDto) {
-    this.password = confirmNewPassword.password;
-    this.confirmPassword = confirmNewPassword.confirmPassword;
+    try {
+      this.password = confirmNewPassword.password;
+      this.confirmPassword = confirmNewPassword.confirmPassword;
+    } catch (err) {
+      return;
+    }
   }
 }

@@ -6,6 +6,10 @@ export class GetByOrderDto {
   id?: number;
 
   constructor(getByOrderDto: GetByOrderDto) {
-    this.id = getByOrderDto.id;
+    try {
+      this.id = getByOrderDto.id;
+    } catch (err) {
+      return;
+    }
   }
 }

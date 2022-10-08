@@ -2,6 +2,7 @@ import {
   ArrayMaxSize,
   ArrayMinSize,
   IsArray,
+  IsNumber,
   IsString,
   ValidateNested,
 } from 'class-validator';
@@ -13,29 +14,29 @@ import { environment } from '@environment';
 import { CreateProductDto } from '../../../dump-modules/product/dto/create-product-dto.model';
 import { User } from '../../user/user.entity';
 import { CreateUserDto } from '../../user/models/create-user-dto.model';
-import { CreatePaymentDto } from '../../../dump-modules/payment/create-payment.dto.model';
-import { Payment } from '../../../core/entities/payment.entity';
+import { CreatePaymentDto } from '../../../dump-modules/payment/dto/create-payment.dto.model';
+import { Payment } from '../../../dump-modules/payment/payment.entity';
 
 export class CreateOrderDto {
   @IsString()
-  name: string;
+  name!: string;
 
-  @Type(() => CreatePaymentDto)
-  payment: CreatePaymentDto;
+  @IsNumber()
+  cartId!: number;
 
-  @IsArray()
   @ValidateNested({ each: true, always: true })
-  @ArrayMinSize(environment.CART_QUANTITY_MIN)
-  @ArrayMaxSize(environment.CART_QUANTITY_MAX)
-  @Type(() => CreateProductDto)
-  products: Array<CreateProductDto>;
+  @Type(() => CreatePaymentDto)
+  payment!: CreatePaymentDto;
 
   constructor(createOrderDto: CreateOrderDto) {
-    this.name = createOrderDto.name;
-    this.products = arrayOfObjectsToInstance(
-      CreateProductDto,
-      createOrderDto.products
-    );
-    this.payment = new CreatePaymentDto(createOrderDto.payment);
+    try {
+      this.name = createOrderDto.name;
+      this.cartId = createOrderDto.cartId;
+      this.payment = new CreatePaymentDto(createOrderDto.payment);
+    } catch (err) {
+      return;
+    }
+
+    // this.payment = createOrderDto.payment;
   }
 }

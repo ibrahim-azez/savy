@@ -10,7 +10,6 @@ import { ValidateParamsId, TryCatchController, ValidateBody } from '@core';
 
 import { User } from '../user/user.entity';
 
-
 @Service()
 export class CartController {
   constructor(private cartService: CartService) {}

@@ -18,12 +18,16 @@ export class CreateCartDto {
   @ArrayMinSize(environment.CART_QUANTITY_MIN)
   @ArrayMaxSize(environment.CART_QUANTITY_MAX)
   @Type(() => CreateProductDto)
-  products: Array<CreateProductDto>;
+  products!: Array<CreateProductDto>;
 
   constructor(createCartDto: CreateCartDto) {
-    this.products = arrayOfObjectsToInstance(
-      CreateProductDto,
-      createCartDto.products
-    );
+    try {
+      this.products = arrayOfObjectsToInstance(
+        CreateProductDto,
+        createCartDto.products
+      );
+    } catch (err) {
+      return;
+    }
   }
 }

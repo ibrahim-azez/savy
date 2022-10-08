@@ -6,6 +6,10 @@ export class GetByCartDto {
   id?: number;
 
   constructor(getByCartDto: GetByCartDto) {
-    this.id = getByCartDto.id;
+    try {
+      this.id = getByCartDto.id;
+    } catch (err) {
+      return;
+    }
   }
 }

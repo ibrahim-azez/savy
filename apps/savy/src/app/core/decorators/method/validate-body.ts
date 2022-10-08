@@ -1,6 +1,7 @@
 // import { validator } from '@core';
 import { validator, logger } from '@core';
 import * as createError from 'http-errors';
+import { HttpResponse } from '../../models/http-response.model';
 
 export function ValidateBody(classToBeValidated: any) {
   return function (
